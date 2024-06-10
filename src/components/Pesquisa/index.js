@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Input from "../Input";
+import { useState } from "react";
 
 
 const PesquisaContainer= styled.section`
@@ -21,18 +22,17 @@ const Subtitulo = styled.h3`
     font-weight: 500;
     margin-bottom: 40px;
 `
-function Pesquisa () {
+function Pesquisa() {
+    const [textoDigitado, setTextoDigitado] = useState('')
     return(
         <PesquisaContainer>
-            <Titulo>Já sabe por onde começar? </Titulo>
+            <Titulo>Já sabe por onde começar?</Titulo>
             <Subtitulo>Encontre seu livro em nossa estante</Subtitulo>
             <Input placeholder="Escreva sua próxima leitura" 
-            onBlur={evento => console.log (evento.target.value)} 
-            
+            onBlur={evento => setTextoDigitado(evento.target.value)}
             />
-            
+            <p>{textoDigitado}</p>
         </PesquisaContainer>
     )
 }
-
 export default Pesquisa;
